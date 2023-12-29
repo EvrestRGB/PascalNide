@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.duy.pascal.compiler"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 432
+        versionName "4.3.2"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    lintOptions {
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.12'
+
+    compile project(':pager')
+    compile project(':colorpicker')
+    compile project(':splitview')
+
+    compile "com.android.support:appcompat-v7:$android_support_version"
+    compile "com.android.support:support-v4:$android_support_version"
+    compile "com.android.support:design:$android_support_version"
+    compile "com.android.support:cardview-v7:$android_support_version"
+    compile "com.android.support:recyclerview-v7:$android_support_version"
+    compile "com.android.support:support-annotations:$android_support_version"
+    compile "com.android.support:multidex:1.0.2"
+
+    compile 'com.google.firebase:firebase-core:11.6.0'
+
+    compile 'io.github.kobakei:ratethisapp:1.2.0'
+    compile 'commons-io:commons-io:2.4'
+    compile 'com.github.clans:fab:1.6.4'
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    compile 'com.github.bmelnychuk:atv:1.2.9'
+    compile 'com.journeyapps:zxing-android-embedded:3.5.0'
+
+    compile 'com.github.afollestad.material-dialogs:commons:0.8.5.8'
+    compile 'com.rengwuxian.materialedittext:library:2.0.3'
+    compile 'com.miguelcatalan:materialsearchview:1.4.0'
+    compile 'org.apmem.tools:layouts:1.10@aar'
+    compile 'com.simplecityapps:recyclerview-fastscroll:1.0.16'
+    compile 'com.makeramen:roundedimageview:2.2.1'
+    compile 'com.yqritc:recyclerview-flexibledivider:1.2.9'
+    compile 'com.google.code.gson:gson:2.8.0'
+
+    compile('com.crashlytics.sdk.android:crashlytics:2.7.1@aar') {
+        transitive = true
+    }
+    compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
+}
+apply plugin: 'com.google.gms.google-services'
